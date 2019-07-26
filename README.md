@@ -31,3 +31,5 @@ There are 3 types of session configurations are available.
 > URLRequest represents information about the request.
 
 URLRequest consists of an HTTP method (GET, POST, etc) and the HTTP headers.
+
+<script src="https://gist.github.com/rintoandrews90/db973ec601f43c891c05268a58e4e070.js"></script>
