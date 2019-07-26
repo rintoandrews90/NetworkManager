@@ -13,6 +13,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        NetworkManager.shared.dataTask(serviceURL: "todos/1", httpMethod: .get, parameters: nil) { (response, error) in
+            if response != nil {
+                print(response)
+            }
+        }
     }
 
 

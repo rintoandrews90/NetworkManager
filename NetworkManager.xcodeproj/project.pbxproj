@@ -12,6 +12,7 @@
 		D60336F122EA18D400D89DCD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D60336EF22EA18D400D89DCD /* Main.storyboard */; };
 		D60336F322EA18D500D89DCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D60336F222EA18D500D89DCD /* Assets.xcassets */; };
 		D60336F622EA18D500D89DCD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D60336F422EA18D500D89DCD /* LaunchScreen.storyboard */; };
+		D60336FF22EA192B00D89DCD /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60336FE22EA192B00D89DCD /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		D60336F222EA18D500D89DCD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D60336F522EA18D500D89DCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D60336F722EA18D500D89DCD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D60336FE22EA192B00D89DCD /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,12 +56,21 @@
 		D60336EA22EA18D400D89DCD /* NetworkManager */ = {
 			isa = PBXGroup;
 			children = (
+				D60336FD22EA18FD00D89DCD /* NetworkManager */,
 				D60336EB22EA18D400D89DCD /* AppDelegate.swift */,
 				D60336ED22EA18D400D89DCD /* ViewController.swift */,
 				D60336EF22EA18D400D89DCD /* Main.storyboard */,
 				D60336F222EA18D500D89DCD /* Assets.xcassets */,
 				D60336F422EA18D500D89DCD /* LaunchScreen.storyboard */,
 				D60336F722EA18D500D89DCD /* Info.plist */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		D60336FD22EA18FD00D89DCD /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				D60336FE22EA192B00D89DCD /* NetworkManager.swift */,
 			);
 			path = NetworkManager;
 			sourceTree = "<group>";
@@ -135,6 +146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D60336FF22EA192B00D89DCD /* NetworkManager.swift in Sources */,
 				D60336EE22EA18D400D89DCD /* ViewController.swift in Sources */,
 				D60336EC22EA18D400D89DCD /* AppDelegate.swift in Sources */,
 			);
