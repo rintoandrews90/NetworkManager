@@ -10,10 +10,10 @@ import Foundation
 
 enum HttpMethod:String{
     case get = "get"
-    case put = "put"
+    case post = "post"
 }
 
-let BaseURL : String = "https://jsonplaceholder.typicode.com/"
+let BaseURL : String = "http://dummy.restapiexample.com/api/v1/"
 
 class NetworkManager {
     
