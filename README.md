@@ -42,7 +42,7 @@ Below you can see network manager class which can handle HTTP requests
         case post = "post"
     }
     
-    let BaseURL : String = "https://jsonplaceholder.typicode.com/"
+    let BaseURL : String = "http://dummy.restapiexample.com/api/v1/"
     
     class NetworkManager {
         
@@ -89,7 +89,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NetworkManager.shared.dataTask(serviceURL: "todos/1", httpMethod: .get, parameters: nil) { (response, error) in
+        NetworkManager.shared.dataTask(serviceURL: "employees", httpMethod: .get, parameters: nil) { (response, error) in
             if response != nil {
                 print(response)
             }
