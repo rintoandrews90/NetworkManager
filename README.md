@@ -39,7 +39,7 @@ Below you can see network manager class which can handle HTTP requests
     
     enum HttpMethod:String{
         case get = "get"
-        case put = "put"
+        case post = "post"
     }
     
     let BaseURL : String = "https://jsonplaceholder.typicode.com/"
