@@ -32,7 +32,47 @@ There are 3 types of session configurations are available.
 
 URLRequest consists of an HTTP method (GET, POST, etc) and the HTTP headers.
 
-<script src="https://gist.github.com/nisrulz/11c0d63428b108f10c83.js"></script>
+import Foundation
 
-{"gitdown": "gist", "id": "db973ec601f43c891c05268a58e4e070"}
+enum HttpMethod:String{
+    case get = "get"
+    case put = "put"
+}
+
+let BaseURL : String = "https://jsonplaceholder.typicode.com/"
+
+class NetworkManager {
+    
+    static let shared = NetworkManager()
+    
+    func dataTask(serviceURL:String,httpMethod:HttpMethod,parameters:[String:String]?,completion:@escaping (AnyObject?, Error?) -> Void) -> Void {
+       
+        requestResource(serviceURL: serviceURL, httpMethod: httpMethod, parameters: parameters, completion: completion)
+    }
+    
+    private func requestResource(serviceURL:String,httpMethod:HttpMethod,parameters:[String:String]?,completion:@escaping (AnyObject?, Error?) -> Void) -> Void {
+        
+        var request = URLRequest(url: URL(string:"\(BaseURL)\(serviceURL)")!)
+       
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = httpMethod.rawValue
+        
+        if (parameters != nil) {
+            request.httpBody = try? JSONSerialization.data(withJSONObject: parameters!, options: .prettyPrinted)
+        }
+        
+        let sessionTask = URLSession(configuration: .default).dataTask(with: request) { (data, response, error) in
+            
+            if (data != nil){
+                let result = try? JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
+                completion (result as AnyObject, nil)
+            }
+                
+            if (error != nil) {
+                completion (nil,error!)
+            }
+        }
+        sessionTask.resume()
+    }
+}
 
