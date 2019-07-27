@@ -32,47 +32,47 @@ There are 3 types of session configurations are available.
 
 URLRequest consists of an HTTP method (GET, POST, etc) and the HTTP headers.
 
-import Foundation
-
-enum HttpMethod:String{
-    case get = "get"
-    case put = "put"
-}
-
-let BaseURL : String = "https://jsonplaceholder.typicode.com/"
-
-class NetworkManager {
+    import Foundation
     
-    static let shared = NetworkManager()
-    
-    func dataTask(serviceURL:String,httpMethod:HttpMethod,parameters:[String:String]?,completion:@escaping (AnyObject?, Error?) -> Void) -> Void {
-       
-        requestResource(serviceURL: serviceURL, httpMethod: httpMethod, parameters: parameters, completion: completion)
+    enum HttpMethod:String{
+        case get = "get"
+        case put = "put"
     }
     
-    private func requestResource(serviceURL:String,httpMethod:HttpMethod,parameters:[String:String]?,completion:@escaping (AnyObject?, Error?) -> Void) -> Void {
+    let BaseURL : String = "https://jsonplaceholder.typicode.com/"
+    
+    class NetworkManager {
         
-        var request = URLRequest(url: URL(string:"\(BaseURL)\(serviceURL)")!)
-       
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = httpMethod.rawValue
+        static let shared = NetworkManager()
         
-        if (parameters != nil) {
-            request.httpBody = try? JSONSerialization.data(withJSONObject: parameters!, options: .prettyPrinted)
+        func dataTask(serviceURL:String,httpMethod:HttpMethod,parameters:[String:String]?,completion:@escaping (AnyObject?, Error?) -> Void) -> Void {
+           
+            requestResource(serviceURL: serviceURL, httpMethod: httpMethod, parameters: parameters, completion: completion)
         }
         
-        let sessionTask = URLSession(configuration: .default).dataTask(with: request) { (data, response, error) in
+        private func requestResource(serviceURL:String,httpMethod:HttpMethod,parameters:[String:String]?,completion:@escaping (AnyObject?, Error?) -> Void) -> Void {
             
-            if (data != nil){
-                let result = try? JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
-                completion (result as AnyObject, nil)
+            var request = URLRequest(url: URL(string:"\(BaseURL)\(serviceURL)")!)
+           
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.httpMethod = httpMethod.rawValue
+            
+            if (parameters != nil) {
+                request.httpBody = try? JSONSerialization.data(withJSONObject: parameters!, options: .prettyPrinted)
             }
+            
+            let sessionTask = URLSession(configuration: .default).dataTask(with: request) { (data, response, error) in
                 
-            if (error != nil) {
-                completion (nil,error!)
+                if (data != nil){
+                    let result = try? JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
+                    completion (result as AnyObject, nil)
+                }
+                    
+                if (error != nil) {
+                    completion (nil,error!)
+                }
             }
+            sessionTask.resume()
         }
-        sessionTask.resume()
     }
-}
 
