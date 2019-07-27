@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     }
     
     private func makeGETRequest(){
-        NetworkManager.shared.dataTask(serviceURL: "todos/1", httpMethod: .get, parameters: nil) { (response, error) in
+        NetworkManager.shared.dataTask(serviceURL: "employees", httpMethod: .get, parameters: nil) { (response, error) in
             if response != nil {
                 print(response)
             }
