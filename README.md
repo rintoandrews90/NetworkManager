@@ -100,3 +100,25 @@ class ViewController: UIViewController {
     }
 }
 ```
+
+HTTP POST
+
+```swift
+import UIKit
+
+class ViewController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        NetworkManager.shared.dataTask(serviceURL: "create", httpMethod: .post, parameters: ["name":"rinto","salary":"456","age":"30"]) { (response, error) in
+            if response != nil {
+                print(response)
+            }
+            if error != nil {
+                print("Error Occoured")
+            }
+        }
+    }
+}
+```
