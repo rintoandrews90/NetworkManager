@@ -32,6 +32,9 @@ There are 3 types of session configurations are available.
 
 URLRequest consists of an HTTP method (GET, POST, etc) and the HTTP headers.
 
+Below you can see network manager class which can handle HTTP requests
+
+```swift
     import Foundation
     
     enum HttpMethod:String{
@@ -75,4 +78,25 @@ URLRequest consists of an HTTP method (GET, POST, etc) and the HTTP headers.
             sessionTask.resume()
         }
     }
+```
+Invoke HTTP Get
 
+```swift
+import UIKit
+
+class ViewController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        NetworkManager.shared.dataTask(serviceURL: "todos/1", httpMethod: .get, parameters: nil) { (response, error) in
+            if response != nil {
+                print(response)
+            }
+            if error != nil {
+                print("Error Occoured")
+            }
+        } 
+    }
+}
+```
